@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const modalClose = document.querySelector(".close");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -22,10 +23,39 @@ function launchModal() {
 
 //Close modal form
 modalClose.addEventListener('click', () => {
-  if(getComputedStyle(modalbg).display != "none"){
-      modalbg.style.display = "none";
+  if (getComputedStyle(modalbg).display != "none") {
+    modalbg.style.display = "none";
   }
 })
+
+// Contrôle de validation des champs
+let myForm = document.getElementsByName('reserve');
+
+// DOM elements form
+  const monNom = document.getElementById('last');
+  const monEmail = document.getElementById('email');
+
+myForm.addEventListener("submit", function (e) {
+  const monPrenom = document.getElementById('first');
+  const myRegex = /^[a-zA-Z-\s]+$/;
+
+  if (monPrenom.value.trim() == "") {
+    let myError = document.getElementById("error");
+    myError.innerHTML = "Le champ suivant est requis.";
+    myError.style.color = "red";
+    e.preventDefault();
+  } else if (myRegex.test(monPrenom.value) == false) {
+    let myError = document.getElementById("error");
+    myError.innerHTML = "Le nom doit comporter uniquement des lettres, des tirets.";
+    myError.style.color = "red";
+    e.preventDefault();
+  }
+})
+
+// launch second modal after submit registration ok
+const modalBtnSubmit = document.querySelector("submitbtn");
+const modalBg2 = document.querySelector('second-modal');
+const modalbgAfterSubmit = document.querySelector(".bground2-close");
 
 
 
@@ -34,31 +64,8 @@ const secondModalClose = document.querySelector('.close2');
 const btnSecondModalClose = document.querySelector('btnAfterSubmit');
 
 secondModalClose.addEventListener('click', () => {
-  if(getComputedStyle(modalBg2, btnSecondModalClose).display != "none"){
+  if (getComputedStyle(modalBg2, btnSecondModalClose).display != "none") {
     modalBg2.style.display = "none";
     btnSecondModalClose.style.display = "none";
   }
 })
-
-
-// Contrôle de validation des champs
-let myForm = document.getElementsByName('reserve');
-
-// DOM elements form
-const monPrenom = document.getElementById('first');
-const monNom = document.getElementById('last');
-const monEmail = document.getElementById('email');
-const myRegex = /^[a-zA-Z-\s]+$/;
-
-myForm.addEventListener('submit', function (e) {
-
-  if (monPrenom.value.trim() == '') {
-    alert('Compléter les champs')
-  }
-})
-
-// launch second modal after submit registration ok
-const modalBg2 = document.querySelector('.bground2');
-const modalbgAfterSubmit = document.querySelector(".bground2");
-const modalBtnSubmit = document.querySelector(".modal-btn-submit");
-

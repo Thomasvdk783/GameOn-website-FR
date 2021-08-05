@@ -598,4 +598,8 @@ footer {
   padding-top: 200px;
 }
 
+/* Placeholders */
 
+.placeholder {
+  color: red;
+}

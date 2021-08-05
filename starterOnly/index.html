@@ -55,17 +55,17 @@
       <div class="content">
         <span class="close"></span>
         <div class="modal-body">
-          <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+          <form name="reserve" action="index.html" method="get" onsubmit="return validate();" id="myForm">
             <div class="formData">
-              <label>Prénom</label><br>
+              <label>Prénom <span id="error"></span></label><br>
               <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
             </div>
             <div class="formData">
-              <label>Nom</label><br>
+              <label>Nom <span id="error"></span></label><br>
               <input class="text-control" type="text" id="last" name="last" /><br>
             </div>
             <div class="formData">
-              <label>E-mail</label><br>
+              <label>E-mail <span id="error"></span></label><br>
               <input class="text-control" type="email" id="email" name="email" /><br>
             </div>
             <div class="formData">
@@ -73,7 +73,7 @@
               <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
             </div>
             <div class="formData">
-              <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+              <label>À combien de tournois GameOn avez-vous déjà participé ? </label><br>
               <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
             </div>
             <p class="text-label">Quelles villes ?</p>
@@ -118,12 +118,12 @@
               </label>
               <br>
             </div>
-            <input itemref="onSubmit" class="btn-submit" type="submit" class="button2 modal-btn-submit" value="C'est parti" />
+            <input itemref="onSubmit" class="btn-submit" type="submit" class="button2 modal-btn-submit" value="C'est parti" id="submitbtn" />
           </form>
         </div>
       </div>
     </div>
-    <div class="bground2 bground2-close">
+    <div class="bground2 bground2-close" id="second-modal">
       <article class="content-bground2">
         <span class="close2"></span>
         <div class="modal-body">
