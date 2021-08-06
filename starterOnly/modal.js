@@ -29,20 +29,23 @@ modalClose.addEventListener('click', () => {
 })
 
 // Contrôle de validation des champs
-let myForm = document.getElementsByName('reserve');
+
 
 // DOM elements form
   const monNom = document.getElementById('last');
   const monEmail = document.getElementById('email');
 
-myForm.addEventListener("submit", function (e) {
+
+function validate(e) {
+  e = e || window.event
   const monPrenom = document.getElementById('first');
   const myRegex = /^[a-zA-Z-\s]+$/;
-
+  
   if (monPrenom.value.trim() == "") {
     let myError = document.getElementById("error");
-    myError.innerHTML = "Le champ suivant est requis.";
+    myError.innerHTML = "Le champ ci-dessus est requis.";
     myError.style.color = "red";
+    myError.style.display = "block";
     e.preventDefault();
   } else if (myRegex.test(monPrenom.value) == false) {
     let myError = document.getElementById("error");
@@ -50,7 +53,7 @@ myForm.addEventListener("submit", function (e) {
     myError.style.color = "red";
     e.preventDefault();
   }
-})
+}
 
 // launch second modal after submit registration ok
 const modalBtnSubmit = document.querySelector("submitbtn");

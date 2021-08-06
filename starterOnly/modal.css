@@ -598,8 +598,12 @@ footer {
   padding-top: 200px;
 }
 
-/* Placeholders */
+/* id "error" formData */
 
-.placeholder {
-  color: red;
+#error {
+  display: none;
+  font-size: 14px;
+  display: flex;
+  justify-content:flex-end;
 }
+
