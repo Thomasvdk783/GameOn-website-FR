@@ -32,28 +32,85 @@ modalClose.addEventListener('click', () => {
 
 
 // DOM elements form
-  const monNom = document.getElementById('last');
-  const monEmail = document.getElementById('email');
+const monPrenom = document.getElementById('first');
+const monNom = document.getElementById('last');
+const monEmail = document.getElementById('email');
 
 
 function validate(e) {
-  e = e || window.event
-  const monPrenom = document.getElementById('first');
   const myRegex = /^[a-zA-Z-\s]+$/;
-  
+
   if (monPrenom.value.trim() == "") {
     let myError = document.getElementById("error");
     myError.innerHTML = "Le champ ci-dessus est requis.";
     myError.style.color = "red";
-    myError.style.display = "block";
+    myError.style.fontSize = "14px";
+    myError.style.display = "flex";
+    myError.style.justifyContent = "flex-end";
     e.preventDefault();
   } else if (myRegex.test(monPrenom.value) == false) {
     let myError = document.getElementById("error");
-    myError.innerHTML = "Le nom doit comporter uniquement des lettres, des tirets.";
+    myError.innerHTML = "Le champ doit comporter uniquement des lettres, des tirets.";
     myError.style.color = "red";
+    myError.style.fontSize = "14px";
+    myError.style.display = "flex";
+    myError.style.justifyContent = "flex-end";
+    e.preventDefault();
+  }
+  modalBg2()
+}
+
+function modalBg2() {
+  if (monPrenom.value() == true) {
+    
+  }
+}
+
+function validate(e) {
+  const myRegex = /^[a-zA-Z-\s]+$/;
+
+  if (monNom.value.trim() == "") {
+    let myError = document.getElementById("error");
+    myError.innerHTML = "Le champ ci-dessus est requis.";
+    myError.style.color = "red";
+    myError.style.fontSize = "14px";
+    myError.style.display = "flex";
+    myError.style.justifyContent = "flex-end";
+    e.preventDefault();
+  } else if (myRegex.test(monNom.value) == false) {
+    let myError = document.getElementById("error");
+    myError.innerHTML = "Le champ doit comporter uniquement des lettres, des tirets.";
+    myError.style.color = "red";
+    myError.style.fontSize = "14px";
+    myError.style.display = "flex";
+    myError.style.justifyContent = "flex-end";
     e.preventDefault();
   }
 }
+
+function validate(e) {
+  const myRegex = /^[a-zA-Z-\s]+$/;
+
+  if (monEmail.value.trim() == "") {
+    let myError = document.getElementById("error");
+    myError.innerHTML = "Le champ ci-dessus est requis.";
+    myError.style.color = "red";
+    myError.style.fontSize = "14px";
+    myError.style.display = "flex";
+    myError.style.justifyContent = "flex-end";
+    e.preventDefault();
+  } else if (myRegex.test(monEmail.value) == false) {
+    let myError = document.getElementById("error");
+    myError.innerHTML = "Le champ doit comporter uniquement des lettres, des tirets.";
+    myError.style.color = "red";
+    myError.style.fontSize = "14px";
+    myError.style.display = "flex";
+    myError.style.justifyContent = "flex-end";
+    e.preventDefault();
+  }
+}
+// Nom 
+
 
 // launch second modal after submit registration ok
 const modalBtnSubmit = document.querySelector("submitbtn");
