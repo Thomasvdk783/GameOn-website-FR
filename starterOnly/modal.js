@@ -106,13 +106,13 @@ function validate(e) {
     const dateRegex = /^(19|20)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$/;
 
     // messages error 
-    const isFirstNameValid = validateInput(firstNameInput, firstNameError, nameRegex, "Le champ doit comporter uniquement des lettres, des tirets.");
-    const isLastNameValid = validateInput(lastNameInput, lastNameError, nameRegex, "Le champ doit comporter uniquement des lettres, des tirets.");
+    const isFirstNameValid = validateInput(firstNameInput, firstNameError, nameRegex, "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
+    const isLastNameValid = validateInput(lastNameInput, lastNameError, nameRegex, "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
     const isEmailValid = validateInput(emailInput, emailError, emailRegex, "Veuillez vérifier que l'email est valide");
-    const isBirthdayValid = validateInput(birthdateInput, birthdateError, dateRegex, "La date est incorrecte");
+    const isBirthdayValid = validateInput(birthdateInput, birthdateError, dateRegex, "Vous devez entrer votre date de naissance.");
     const isQuantityValid = validateInput(quantityInput, quantityError, quantityRegex, "Seulement des caractères numérique sont autorisés");
-    const isLocationValid = validateCheckbox(isLocationChecked, errorCityCheckbox, "Vous devez choisir une ville")
-    const isConditionValid = validateCheckbox(conditionsCheckboxInput.checked, errorConditionsCheckbox, "Vous devez accepter les conditions utilisations")
+    const isLocationValid = validateCheckbox(isLocationChecked, errorCityCheckbox, "Vous devez choisir une option");
+    const isConditionValid = validateCheckbox(conditionsCheckboxInput.checked, errorConditionsCheckbox, "Vous devez vérifier que vous acceptez les termes et conditions.")
 
     // Form validation
     if (isFirstNameValid && isLastNameValid && isEmailValid && isBirthdayValid && isQuantityValid && isLocationValid && isConditionValid) {
