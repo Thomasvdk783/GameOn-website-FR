@@ -32,8 +32,8 @@ modalClose.addEventListener('click', () => {
 let isFormValid = true;
 
 // DOM elements form
-const firstNameInput = document.getElementById('first');
-const lastNameInput = document.getElementById('last');
+const firstNameInput = document.getElementById('first-name');
+const lastNameInput = document.getElementById('last-name');
 const emailInput = document.getElementById('email');
 const quantityInput = document.getElementById('quantity');
 const conditionsCheckboxInput = document.getElementById('checkbox1');
@@ -51,23 +51,26 @@ const errorCityCheckbox = document.getElementById('city-checkbox-error');
 const birthdateError = document.getElementById('date-error')
 
 function validateInput(input, errorTag, regex, message) {
-    //first name error message
+    //first name, laste name, email, error message
     if (input.value.trim() == "") {
         errorTag.innerHTML = "Le champ ci-dessus est requis";
         errorTag.style.color = "red";
         errorTag.style.fontSize = "14px";
         errorTag.style.display = "flex";
-        errorTag.style.justifyContent = "flex-end";
+        errorTag.style.justifyContent = "flex-start";
+        input.style.border="2px solid red";
         return false
     } else if (regex.test(input.value) == false) {
         errorTag.innerHTML = message;
         errorTag.style.color = "red";
         errorTag.style.fontSize = "14px";
         errorTag.style.display = "flex";
-        errorTag.style.justifyContent = "flex-end";
+        errorTag.style.justifyContent = "flex-start";
+        input.style.border="2px solid red";
         return false
     } else {
         errorTag.style.display = "none"
+        input.style.border="2px solid white";
         return true
     }
 }
@@ -78,7 +81,7 @@ function validateCheckbox(conditionToCheck, errorTag, message) {
         errorTag.style.color = "red";
         errorTag.style.fontSize = "14px";
         errorTag.style.display = "flex";
-        errorTag.style.justifyContent = "flex-end";
+        errorTag.style.justifyContent = "flex-start";
         return false;
     } else {
         errorTag.style.display = "none";
@@ -102,6 +105,7 @@ function validate(e) {
     const quantityRegex = /^[0-9][0-9]?$/;
     const dateRegex = /^(19|20)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$/;
 
+    // messages error 
     const isFirstNameValid = validateInput(firstNameInput, firstNameError, nameRegex, "Le champ doit comporter uniquement des lettres, des tirets.");
     const isLastNameValid = validateInput(lastNameInput, lastNameError, nameRegex, "Le champ doit comporter uniquement des lettres, des tirets.");
     const isEmailValid = validateInput(emailInput, emailError, emailRegex, "Veuillez vérifier que l'email est valide");
@@ -110,6 +114,7 @@ function validate(e) {
     const isLocationValid = validateCheckbox(isLocationChecked, errorCityCheckbox, "Vous devez choisir une ville")
     const isConditionValid = validateCheckbox(conditionsCheckboxInput.checked, errorConditionsCheckbox, "Vous devez accepter les conditions utilisations")
 
+    // Form validation
     if (isFirstNameValid && isLastNameValid && isEmailValid && isBirthdayValid && isQuantityValid && isLocationValid && isConditionValid) {
         console.log("form valid");
         showConfirmationModal(modalBg2, modalbg);
